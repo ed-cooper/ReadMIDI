@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TestWindows")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ReadMIDI Demo App")]
+[assembly: AssemblyDescription("Demo App for ReadMIDI library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TestWindows")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("ReadMIDI Demo App")]
+[assembly: AssemblyCopyright("Copyright © Chooper100 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

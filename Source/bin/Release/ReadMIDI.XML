@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReadMIDI</name>
+    </assembly>
+    <members>
+        <member name="T:ReadMIDI.Events.ChannelPressureEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.ChannelPressure"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.ChannelPressureEvent.Pressure">
+            <summary>
+            Gets the pressure.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.ChannelPressureEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.ChannelPressureEvent"/> class using the specified patch.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.EndOfTrackEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.EndOfTrack"/> event.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.EndOfTrackEvent.#ctor(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.EndOfTrackEvent"/> class.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.InstrumentChangeEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.InstrumentChange"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.InstrumentChangeEvent.Patch">
+            <summary>
+            Gets the new patch (instrument).
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.InstrumentChangeEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.InstrumentChangeEvent"/> class using the specified patch.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="patch">The new patch (instrument).</param>
+        </member>
+        <member name="M:ReadMIDI.Events.InstrumentChangeEvent.GetInstrumentName">
+            <summary>
+            Returns the display name of the instrument. Shorthand for <see cref="F:ReadMIDI.DisplayServices.InstrumentNames"/>.
+            </summary>
+            <returns>The display name of the instrument.</returns>
+            <seealso cref="F:ReadMIDI.DisplayServices.InstrumentNames"/>
+        </member>
+        <member name="T:ReadMIDI.Events.ControlChangeEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.ControlChange"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.ControlChangeEvent.Control">
+            <summary>
+            Gets the control that was changed.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.ControlChangeEvent.Value">
+            <summary>
+            Gets the new value of the control.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.ControlChangeEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.ControlChangeEvent"/> class using the specified control and value.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="control">The control that was changed.</param>
+            <param name="value">The new value of the control.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.KeySignatureEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.KeySignature"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.KeySignatureEvent.Key">
+            <summary>
+            Gets the id for the key. A positive number indicates the number of sharps, a negative number indicates the number of flats. See <see cref="T:ReadMIDI.MajorKeys"/> and <see cref="T:ReadMIDI.MinorKeys"/>.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.KeySignatureEvent.Flats">
+            <summary>
+            Gets the amount of flats in the key.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.KeySignatureEvent.Sharps">
+            <summary>
+            Gets the number of sharps in the key.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.KeySignatureEvent.Minor">
+            <summary>
+            Gets a value indicating whether the key is minor (true) or major (false)
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.KeySignatureEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.SByte,System.Boolean)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.KeySignatureEvent"/> class using the specified sequence number.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="key">The key signature id.</param>
+            <param name="minor">Whether the key is minor or major.</param>
+        </member>
+        <member name="M:ReadMIDI.Events.KeySignatureEvent.GetDisplayName">
+            <summary>
+            Returns the display name for this key. Shorthand for <see cref="M:ReadMIDI.DisplayServices.GetKeySignatureName(System.SByte,System.Boolean)"/>.
+            </summary>
+            <returns>The display name for this key.</returns>
+        </member>
+        <member name="T:ReadMIDI.Events.MidiChannelPrefixEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.MidiChannelPrefix"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.MidiChannelPrefixEvent.Channel">
+            <summary>
+            Gets the channel.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.MidiChannelPrefixEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.MidiChannelPrefixEvent"/> class using the specified sequence number.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="channel">The channel.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.SetTempoEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.SetTempo"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SetTempoEvent.Tempo">
+            <summary>
+            Gets the tempo. To get the tempo in BPM, divide 60,000,000 by this value.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.SetTempoEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.SetTempoEvent"/> class using the specified sequence number.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="tempo">The tempo.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.SMPTEOffsetEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.SMPTEOffset"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SMPTEOffsetEvent.FrameRate">
+            <summary>
+            Gets the frame rate.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SMPTEOffsetEvent.Hour">
+            <summary>
+            Gets the hour.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SMPTEOffsetEvent.Minute">
+            <summary>
+            Gets the minute.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SMPTEOffsetEvent.Second">
+            <summary>
+            Gets the second.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SMPTEOffsetEvent.Frame">
+            <summary>
+            Gets the frame.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SMPTEOffsetEvent.SubFrame">
+            <summary>
+            Gets the sub-frame.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.SMPTEOffsetEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.Single,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.SMPTEOffsetEvent"/> class using the specified SMPTE values.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="frameRate">The frame rate.</param>
+            <param name="hour">The hour.</param>
+            <param name="minute">The minute.</param>
+            <param name="second">The second.</param>
+            <param name="frame">The frame.</param>
+            <param name="subFrame">The sub-frame.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.SysExEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.SysEx"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SysExEvent.Data">
+            <summary>
+            Gets the data of the system exclusive event.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.SysExEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.Byte[])">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.SysExEvent"/> class using the specified data.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="data">The data of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.TimeSignatureEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.TimeSignature"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TimeSignatureEvent.Numerator">
+            <summary>
+            Gets the numerator of the time signature. Equal to number of beats in a bar.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TimeSignatureEvent.Denominator">
+            <summary>
+            Gets the denominator of the time signature. Equal to the number of quarter notes in a beat.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TimeSignatureEvent.TicksPerQuarterNote">
+            <summary>
+            Gets the amount of ticks per quarter note.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TimeSignatureEvent.TicksPerQuarter32Note">
+            <summary>
+            Gets the amount of 32nd notes per midi quarter note.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.TimeSignatureEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.TimeSignatureEvent"/> class using the specified sequence number.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="numerator">The numerator of the time signature.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.MetaEvent">
+            <summary>
+            Represents a meta event in the MIDI track.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.MetaEvent.Type">
+            <summary>
+            Gets the <see cref="T:ReadMIDI.MetaEventType"/> of this <see cref="T:ReadMIDI.Events.MetaEvent"/>.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.MetaEvent.Init(System.UInt32,System.UInt32,System.UInt32,ReadMIDI.MetaEventType)">
+            <summary>
+            Initialises the <see cref="T:ReadMIDI.Events.MetaEvent"/> instance.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="type">The type of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.MidiEvent">
+            <summary>
+            Represents a MIDI event in the MIDI track.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.MidiEvent.Type">
+            <summary>
+            Gets the <see cref="T:ReadMIDI.MidiEventType"/> of this <see cref="T:ReadMIDI.Events.MidiEvent"/>.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.MidiEvent.Channel">
+            <summary>
+            Gets the channel of this event.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.MidiEvent.Init(System.Byte,System.UInt32,System.UInt32,System.UInt32,ReadMIDI.MidiEventType)">
+            <summary>
+            Initialises the <see cref="T:ReadMIDI.Events.MidiEvent"/>.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="type">The type of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.NoteEvent">
+            <summary>
+            Represents a MIDI note event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.NoteEvent.NoteNumber">
+            <summary>
+            Gets the number of the note.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.NoteEvent.Velocity">
+            <summary>
+            Gets the velocity (loudness) of the note.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.NoteEvent.Init(System.Byte,System.UInt32,System.UInt32,System.UInt32,ReadMIDI.MidiEventType,System.Byte,System.Byte)">
+            <summary>
+            Initialises the <see cref="T:ReadMIDI.Events.NoteEvent"/>.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="type">The type of the event.</param>
+            <param name="noteNumber">The number of the note.</param>
+            <param name="velocity">The velocity of the note.</param>
+        </member>
+        <member name="M:ReadMIDI.Events.NoteEvent.GetNoteName(System.Boolean)">
+            <summary>
+            Returns the display name of the note. Shorthand for <see cref="M:ReadMIDI.DisplayServices.GetNoteName(System.Byte,System.Boolean)"/>.
+            </summary>
+            <param name="sharp">Indicates whether to display the note as a sharp or flat if necessary.</param>
+            <returns>The display name of the note.</returns>
+        </member>
+        <member name="T:ReadMIDI.Events.NoteOffEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.NoteOff"/> event.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.NoteOffEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.NoteOffEvent"/> class using the specified note number and velocity.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="noteNumber">The number of the note.</param>
+            <param name="velocity">The velocity of the note.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.NoteOnEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.NoteOn"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.NoteOnEvent.OffEvent">
+            <summary>
+            Gets the <see cref="T:ReadMIDI.Events.NoteOffEvent"/> associated with this <see cref="T:ReadMIDI.Events.NoteOnEvent"/>.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.NoteOnEvent.Duration">
+            <summary>
+            Gets the duration of this note. Note: duration 0 indicates duration unknown.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.NoteOnEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.NoteOnEvent"/> class using the specified note number and velocity.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="noteNumber">The number of the note.</param>
+            <param name="velocity">The velocity of the note.</param>
+        </member>
+        <member name="M:ReadMIDI.Events.NoteOnEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte,System.Byte,ReadMIDI.Events.NoteOffEvent)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.NoteOnEvent"/> class using the specified <see cref="T:ReadMIDI.Events.NoteOffEvent"/>, note number and velocity.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="noteNumber">The number of the note.</param>
+            <param name="velocity">The velocity of the note.</param>
+            <param name="offEvent">The <see cref="T:ReadMIDI.Events.NoteOffEvent"/> associated with this event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.PitchWheelChangeEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.PitchWeelChange"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.PitchWheelChangeEvent.Pitch">
+            <summary>
+            Gets the new pitch.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.PitchWheelChangeEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.UInt16)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.PitchWheelChangeEvent"/> class using the specified pitch.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="pitch">The new pitch.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.PolyphonicKeyPressureEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MidiEventType.PolyphonicKeyPressure"/> event.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.PolyphonicKeyPressureEvent.#ctor(System.Byte,System.UInt32,System.UInt32,System.UInt32,System.Byte,System.Byte)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.PolyphonicKeyPressureEvent"/> class using the specified note number and velocity.
+            </summary>
+            <param name="channel">The channel of the event.</param>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="noteNumber">The number of the note.</param>
+            <param name="velocity">The velocity of the note.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.SequenceNumberEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.SequenceNumber"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.SequenceNumberEvent.SequenceNumber">
+            <summary>
+            Gets the sequence number.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.SequenceNumberEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt16)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.SequenceNumberEvent"/> class using the specified sequence number.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="sequenceNumber">The sequence number.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.TextEvent">
+            <summary>
+            Represents a <see cref="F:ReadMIDI.MetaEventType.TextEvent"/> event.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TextEvent.Text">
+            <summary>
+            Gets the text.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.TextEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.TextEvent"/> class using the specified text.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:ReadMIDI.Events.TextEvent.#ctor(System.UInt32,System.UInt32,System.UInt32,System.String,ReadMIDI.MetaEventType)">
+            <summary>
+            Creates a new instance of the <see cref="T:ReadMIDI.Events.TextEvent"/> class using the specified text and type.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+            <param name="text">The text.</param>
+            <param name="type">The type of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.Events.TrackEvent">
+            <summary>
+            Represents a single event in a track chunk.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TrackEvent.DeltaTime">
+            <summary>
+            Gets the delta time of the <see cref="T:ReadMIDI.Events.TrackEvent"/>. Measured in delta ticks per quarter note.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TrackEvent.AbsoluteTime">
+            <summary>
+            Gets the absolute time of the <see cref="T:ReadMIDI.Events.TrackEvent"/>. Measured in delta ticks per quarter note.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.Events.TrackEvent.Track">
+            <summary>
+            Gets the track of the <see cref="T:ReadMIDI.Events.TrackEvent"/>.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Events.TrackEvent.Init(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Initialises the <see cref="T:ReadMIDI.Events.TrackEvent"/>.
+            </summary>
+            <param name="track">The track of the event.</param>
+            <param name="deltaTime">The delta time of the event.</param>
+            <param name="absoluteTime">The absolute time of the event.</param>
+        </member>
+        <member name="T:ReadMIDI.LibraryDebugMode">
+            <summary>
+            Enumeration of various debug options.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.LibraryDebugMode.None">
+            <summary>
+            Indicates that no debug text should be outputted.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.LibraryDebugMode.ToConsole">
+            <summary>
+            Indicates that debug text should be outputted to the console.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.LibraryDebugMode.ToDebug">
+            <summary>
+            Indicates that debug text should be outputted to the debug window.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.LibraryDebugMode.ToFile">
+            <summary>
+            Indicates that debug text should be outputted to a file.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.FileFormat.SingleTrackFile">
+            <summary>
+            Indicates a song with only one track.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.FileFormat.MultipleTrackFile">
+            <summary>
+            Indicates a song with multiple tracks.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.FileFormat.MultipleSongFile">
+            <summary>
+            Indicates a series of single track files.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.Settings">
+            <summary>
+            Provides various generic settings for the <see cref="N:ReadMIDI"/> library.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.Settings.DebugMode">
+            <summary>
+            The debug mode of the library.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.Settings.DebugFilePath">
+            <summary>
+            The file path to save to when outputting debug text. Only used when <see cref="F:ReadMIDI.Settings.DebugMode"/> is set to <see cref="F:ReadMIDI.LibraryDebugMode.ToFile"/>.
+            </summary>
+            <remarks>Only used when <see cref="F:ReadMIDI.Settings.DebugMode"/> is set to <see cref="F:ReadMIDI.LibraryDebugMode.ToFile"/>.</remarks>
+        </member>
+        <member name="T:ReadMIDI.MidiEventType">
+            <summary>
+            Enumeration of all the various midi event types.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.NoteOff">
+            <summary>
+            Indicates that a note has been released. See <see cref="T:ReadMIDI.Events.NoteOffEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.NoteOn">
+            <summary>
+            Indicates that a note has been pressed. See <see cref="T:ReadMIDI.Events.NoteOnEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.PolyphonicKeyPressure">
+            <summary>
+            (Aftertouch) Indicates that a note has been pressed after it has 'bottomed out'. See <see cref="T:ReadMIDI.Events.PolyphonicKeyPressureEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.ControlChange">
+            <summary>
+            Indicates that a controller value has changed. See <see cref="T:ReadMIDI.Events.ControlChangeEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.InstrumentChange">
+            <summary>
+            Indicates that the channel patch (instrument) has changed. <see cref="T:ReadMIDI.Events.InstrumentChangeEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.ChannelPressure">
+            <summary>
+            (Aftertouch) Indicates that a note has been pressed after it has 'bottomed out'. Unlike <see cref="F:ReadMIDI.MidiEventType.PolyphonicKeyPressure"/>, this message signals the greatest key pressure. See <see cref="T:ReadMIDI.Events.ChannelPressureEvent"/>.
+            </summary>
+            <remarks>Unlike <see cref="F:ReadMIDI.MidiEventType.PolyphonicKeyPressure"/>, this message signals the greatest key pressure.</remarks>
+        </member>
+        <member name="F:ReadMIDI.MidiEventType.PitchWeelChange">
+            <summary>
+            Indicates a change in the pitch wheel. See <see cref="T:ReadMIDI.Events.PitchWheelChangeEvent"/>.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.MinorKeys">
+            <summary>
+            Enumeration of all minor key signatures.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.MajorKeys">
+            <summary>
+            Enumeration of all major key signatures.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.MidiDrum">
+            <summary>
+            Enumeration of the various GM MIDI drums.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.MidiInstrument">
+            <summary>
+            Enumeration of all the GM MIDI instruments.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.MetaEventType">
+            <summary>
+            Enumeration of all the various meta event types.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.SequenceNumber">
+            <summary>
+            Indicates an event containing the number of a sequence. See <see cref="T:ReadMIDI.Events.SequenceNumberEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.TextEvent">
+            <summary>
+            Indicates an event containing a description of anything. See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.CopyrightNotice">
+            <summary>
+            Indicates an event containing a copyright notice. See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.SequenceName">
+            <summary>
+            Indicates an event containing either the name of the sequence or track. See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.InstrumentName">
+            <summary>
+            Indicates an event containing the instrument to be used in that track. See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.LyricText">
+            <summary>
+            Indicates an event containing a lyric to be sung. See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.MarkerText">
+            <summary>
+            Indicates an event containing a marker in the sequence - eg. "First Verse" See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.CuePoint">
+            <summary>
+            Indicates an event containing a description of something happening on a film or performance at that point in the track. See <see cref="T:ReadMIDI.Events.TextEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.MidiChannelPrefix">
+            <summary>
+            Indicates an event containing a MIDI channel to associate with all following events until the next normal MIDI event. See <see cref="T:ReadMIDI.Events.MidiChannelPrefixEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.EndOfTrack">
+            <summary>
+            Indicates an event marking the end of a track. See <see cref="T:ReadMIDI.Events.EndOfTrackEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.SetTempo">
+            <summary>
+            Indicates an event marking a tempo change. See <see cref="T:ReadMIDI.Events.SetTempoEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.SMPTEOffset">
+            <summary>
+            Indicates an event designating the SMPTEtime at which a track is supposed to start. <see cref="T:ReadMIDI.Events.SMPTEOffsetEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.TimeSignature">
+            <summary>
+            Indicates an event marking a change in time signature. See <see cref="T:ReadMIDI.Events.TimeSignatureEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.KeySignature">
+            <summary>
+            Indicates an event marking a change in key signature. See <see cref="T:ReadMIDI.Events.KeySignatureEvent"/>.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.MetaEventType.SysEx">
+            <summary>
+            Indicates a system exclusive event. See <see cref="T:ReadMIDI.Events.SysExEvent"/>.
+            </summary>
+        </member>
+        <member name="T:ReadMIDI.MidiFile">
+            <summary>
+            Represents a loaded MIDI file.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.MidiFile.DeltaTicksPerQuarterNote">
+            <summary>
+            Gets the amount of delta ticks per quarter beat.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.MidiFile.TrackCount">
+            <summary>
+            Gets the amount of tracks in the MIDI file.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.MidiFile.FileFormat">
+            <summary>
+            Gets the <see cref="T:ReadMIDI.FileFormat"/> of this MIDI file.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.MidiFile.Tracks">
+            <summary>
+            Gets the list of tracks and their data in the MIDI file.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.MidiFile.#ctor(System.String)">
+            <summary>
+            Opens a new <see cref="T:ReadMIDI.MidiFile"/> from the specified path.
+            </summary>
+            <param name="path">The path to load the midi file from.</param>
+        </member>
+        <member name="T:ReadMIDI.DisplayServices">
+            <summary>
+            Provides fields and methods for displaying human readable labels.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.DisplayServices.InstrumentNames">
+            <summary>
+            Array containing the string display names of all the MIDI GM instruments.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.DisplayServices.DrumNames">
+            <summary>
+            Array containing the display names of all the MIDI GM drums. Note: All indexes are offset by -35.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.DisplayServices.NoteSharpNames">
+            <summary>
+            Array containing the display names of all the notes in an octave, using the sharp symbol where necessary.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.DisplayServices.NoteFlatNames">
+            <summary>
+            Array containing the display names of all the notes in an octave, using the sharp symbol where necessary.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.DisplayServices.MajorKeys">
+            <summary>
+            Array containing the display names of all major key signatures. Note: All indexes are offset by +7.
+            </summary>
+        </member>
+        <member name="F:ReadMIDI.DisplayServices.MinorKeys">
+            <summary>
+            Array containing the display names of all minor key signatures. Note: All indexes are offset by +7.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.DisplayServices.GetDrumName(System.Int32)">
+            <summary>
+            Returns the display name of the specified GM drum.
+            </summary>
+            <param name="drum">The GM drum index to get the display name of.</param>
+            <returns>The display name of the specified GM drum.</returns>
+        </member>
+        <member name="M:ReadMIDI.DisplayServices.GetNoteName(System.Byte,System.Boolean)">
+            <summary>
+            Returns the display name of the specified note.
+            </summary>
+            <param name="note">The note to get the display name of.</param>
+            <param name="sharp">Whether to use sharps (true) of flats (false) when necessary.</param>
+            <returns>The display name of the note.</returns>
+        </member>
+        <member name="M:ReadMIDI.DisplayServices.GetKeySignatureName(System.SByte,System.Boolean)">
+            <summary>
+            Returns the display name for the specified key signature.
+            </summary>
+            <param name="key">The key identifier (-7 to 7).</param>
+            <param name="minor">Whether the key is minor or major.</param>
+            <returns>The display name for the specified key signature.</returns>
+        </member>
+        <member name="T:ReadMIDI.TrackChunk">
+            <summary>
+            Represents a track in a MIDI file.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.TrackChunk.MetaEvents">
+            <summary>
+            Gets the list of meta events in the track.
+            </summary>
+        </member>
+        <member name="P:ReadMIDI.TrackChunk.MidiEvents">
+            <summary>
+            Gets the list of MIDI events in the track.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.TrackChunk.#ctor(ReadMIDI.Events.MetaEvent[],ReadMIDI.Events.MidiEvent[])">
+            <summary>
+            Initialises a new instance of the <see cref="T:ReadMIDI.TrackChunk"/> using the specified meta and MIDI events.
+            </summary>
+            <param name="metaEvents">The list of meta events in the track.</param>
+            <param name="midiEvents">The list of MIDI events in the track.</param>
+        </member>
+        <member name="T:ReadMIDI.Utils">
+            <summary>
+            Provides various utilites.
+            </summary>
+        </member>
+        <member name="M:ReadMIDI.Utils.SwapBytes(System.UInt16)">
+            <summary>
+            Swaps the byte order of a <see cref="T:System.UInt16"/> value.
+            </summary>
+            <param name="value">The <see cref="T:System.UInt16"/> to swap the byte order of.</param>
+        </member>
+        <member name="M:ReadMIDI.Utils.SwapBytes(System.UInt32)">
+            <summary>
+            Swaps the byte order of a <see cref="T:System.UInt32"/> value.
+            </summary>
+            <param name="value">The <see cref="T:System.UInt32"/> to swap the byte order of.</param>
+        </member>
+        <member name="M:ReadMIDI.Utils.CorrectEndian(System.UInt32)">
+            <summary>
+            Corrects a big-endian <see cref="T:System.UInt32"/> value for the current system.
+            </summary>
+            <param name="value">The big-endian <see cref="T:System.UInt32"/> value to correct the byte order of.</param>
+        </member>
+        <member name="M:ReadMIDI.Utils.CorrectEndian(System.UInt16)">
+            <summary>
+            Corrects a big-endian <see cref="T:System.UInt16"/> value for the current system.
+            </summary>
+            <param name="value">The big-endian <see cref="T:System.UInt16"/> value to correct the byte order of.</param>
+        </member>
+        <member name="M:ReadMIDI.Utils.ReadVariableLengthUint(System.IO.BinaryReader)">
+            <summary>
+            Returns the next variable length integer in the <see cref="T:System.IO.BinaryReader"/>.
+            </summary>
+            <param name="br">The <see cref="T:System.IO.BinaryReader"/> to read the data from.</param>
+        </member>
+        <member name="M:ReadMIDI.Utils.PrintDebug(System.String)">
+            <summary>
+            Outputs the specified message to the selected output source.
+            </summary>
+            <param name="text">The text to output.</param>
+        </member>
+    </members>
+</doc>
